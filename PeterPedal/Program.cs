@@ -23,7 +23,7 @@ class RepairCase
 
 class SparePartCatalog
 {
-    private Dictionary<string, decimal> prices = new Dictionary<string, decimal>
+    private readonly Dictionary<string, decimal> _prices = new Dictionary<string, decimal>
     {
         { "Gear cable", 150m },
         { "Sprocket", 300m },
@@ -32,9 +32,9 @@ class SparePartCatalog
 
     public decimal GetPrice(string partName)
     {
-        if (prices.ContainsKey(partName))
+        if (_prices.ContainsKey(partName))
         {
-            return prices[partName];
+            return _prices[partName];
         }
         return 0m;
     }
