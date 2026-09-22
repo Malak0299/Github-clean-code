@@ -42,7 +42,7 @@ class SparePartCatalog
 
 class Notifier
 {
-    public void SendSms(string phone, String message)
+    public void SendSms(string phone, string message)
     {
         Console.WriteLine("SMS to " + phone + ": " + message);
     }
