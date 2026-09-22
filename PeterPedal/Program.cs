@@ -17,7 +17,7 @@ class RepairCase
     public List<string> Findings = new List<string>();
     public List<string> Parts = new List<string>();
     public int Status; // 0 = created, 1 = awaiting approval, 2 = approved, 3 = finished
-    public Boolean Approved;
+    public Bool Approved;
     public decimal TotalPrice;
 }
 
