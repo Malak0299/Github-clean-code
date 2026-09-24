@@ -193,7 +193,7 @@ class repairService
     }
 
     // Calculates the final total price for the receipt.
-    private decimal CalculateTotal(RepairCase c)
+    private decimal CalculateTotal()
     {
         decimal partsPrice = CalculatePriceForGearCable() + CalculatePriceForSprocket() + CalculatePriceForBrakePad();
         decimal labor = HOURLY_RATE * 2;
@@ -208,7 +208,7 @@ class repairService
 
         if (c.Status == 2 && c.Parts.Count > 0 && c.Approved)
         {
-            decimal total = CalculateTotal(c);
+            decimal total = CalculateTotal();
 
             if (total < 0)
             {
