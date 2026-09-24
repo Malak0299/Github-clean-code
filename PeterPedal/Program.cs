@@ -202,7 +202,7 @@ class repairService
         return subtotal + vat;
     }
 
-    public void finishRepair(string frameNumber)
+    public void FinishRepair(string frameNumber)
     {
         RepairCase c = FindCase(frameNumber);
 
@@ -264,7 +264,7 @@ class Program
         service.CalculateOffer("STL-4471");
         service.ApproveCase("STL-4471");
         service.PimpMyBike("STL-4471");
-        service.finishRepair("STL-4471");
+        service.FinishRepair("STL-4471");
         service.PayCase("STL-4471");
     }
 }
