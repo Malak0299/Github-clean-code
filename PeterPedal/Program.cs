@@ -155,7 +155,7 @@ class repairService
     }
 
     // Calculates a price estimate for the customer's offer.
-    private decimal BeregnPris(RepairCase c)
+    private decimal CalculatePrice(RepairCase c)
     {
         decimal partsPrice = CalculatePriceForGearCable() + CalculatePriceForSprocket() + CalculatePriceForBrakePad();
         decimal labor = HOURLY_RATE * 2;
@@ -166,14 +166,14 @@ class repairService
 
     public void CalculateOffer(string frameNumber)
     {
-        RepairCase c = FindCase(frameNumber);
-        decimal Price = BeregnPris(c);
-        c.TotalPrice = Price;
-        c.Status = 1;
+        RepairCase cases = FindCase(frameNumber);
+        decimal prices = CalculatePrice(cases);
+        cases.TotalPrice = prices;
+        cases.Status = 1;
 
         int d = 3;
-        string cstTlf = c.CustomerInfo.Phone;
-        Console.WriteLine($"Offer for case {frameNumber}: {Price.ToString("F2")} kr, delivery in {d} days.");
+        string cstTlf = cases.CustomerInfo.Phone;
+        Console.WriteLine($"Offer for case {frameNumber}: {prices.ToString("F2")} kr, delivery in {d} days.");
         Console.WriteLine($"Calling {cstTlf}...");
         notifier.LeaveVoicemail(cstTlf);
     }
@@ -204,25 +204,25 @@ class repairService
 
     public void finishRepair(string frameNumber)
     {
-        RepairCase c = FindCase(frameNumber);
+        RepairCase cases = FindCase(frameNumber);
 
-        if (c.Status == 2 && c.Parts.Count > 0 && c.Approved)
+        if (cases.Status == 2 && cases.Parts.Count > 0 && cases.Approved)
         {
-            decimal total = CalculateTotal(c);
+            decimal total = CalculateTotal(cases);
 
             if (total < 0)
             {
                 Console.WriteLine("Error: negative price");
             }
 
-            c.TotalPrice = total;
-            c.Status = 3;
+            cases.TotalPrice = total;
+            cases.Status = 3;
 
-            String message = "Hi " + c.CustomerInfo.FirstName + ", your bike is ready for pickup!";
-            notifier.SendSms(c.CustomerInfo.Phone, message);
+            String message = "Hi " + cases.CustomerInfo.FirstName + ", your bike is ready for pickup!";
+            notifier.SendSms(cases.CustomerInfo.Phone, message);
 
             Console.WriteLine("--- Receipt ---");
-            Console.WriteLine("Frame number: " + c.FrameNumber);
+            Console.WriteLine("Frame number: " + cases.FrameNumber);
             Console.WriteLine("Total: " + Math.Round(total, 2) + " kr");
         }
     }
