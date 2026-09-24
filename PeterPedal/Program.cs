@@ -171,9 +171,9 @@ class repairService
         c.TotalPrice = Price;
         c.Status = 1;
 
-        int d = 3;
+        int days = 3;
         string cstTlf = c.CustomerInfo.Phone;
-        Console.WriteLine($"Offer for case {frameNumber}: {Price.ToString("F2")} kr, delivery in {d} days.");
+        Console.WriteLine($"Offer for case {frameNumber}: {Price.ToString("F2")} kr, delivery in {days} days.");
         Console.WriteLine($"Calling {cstTlf}...");
         notifier.LeaveVoicemail(cstTlf);
     }
