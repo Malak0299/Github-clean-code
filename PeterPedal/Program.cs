@@ -126,7 +126,7 @@ class repairService
             }
         }
 
-        Int32 numberOfParts = c.Parts.Count;
+        int numberOfParts = c.Parts.Count;
         Console.WriteLine($"Found {numberOfParts} part(s) for case {frameNumber}.");
     }
 
