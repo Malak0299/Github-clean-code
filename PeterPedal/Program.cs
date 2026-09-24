@@ -61,7 +61,7 @@ class repairService
 
     private const decimal HOURLY_RATE = 450;
 
-    public void CreateCase(string firstName, string lastName, string phone, string FrameNumber, string problem)
+    public void CreateCase(string firstName, string lastName, string phone, string frameNumber, string problem)
     {
         RepairCaseData customer = new RepairCaseData();
         customer.FirstName = firstName;
@@ -69,14 +69,14 @@ class repairService
         customer.Phone = phone;
 
         RepairCase c = new RepairCase();
-        c.FrameNumber = FrameNumber;
+        c.FrameNumber = frameNumber;
         c.Problem = problem;
         c.CustomerInfo = customer;
         c.Status = 0;
 
         cases.Add(c);
 
-        Console.WriteLine($"Case created for {customer.FirstName} {customer.LastName}, frame number {FrameNumber}.");
+        Console.WriteLine($"Case created for {customer.FirstName} {customer.LastName}, frame number {frameNumber}.");
         Console.WriteLine($"Problem: {problem}");
     }
 
