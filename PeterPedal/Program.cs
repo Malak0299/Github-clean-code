@@ -234,10 +234,7 @@ class repairService
     }
 
     // Old summary print, replaced by the receipt in finishRepair(). No longer called anywhere.
-    public void PrintCaseSummary(string frameNumber) {
-	RepairCase c = FindCase(frameNumber);
-	Console.WriteLine("Case summary for " + c.FrameNumber + ": " + c.Problem);
-    }
+    // DEAD CODE DELETED HERE
 
     private RepairCase FindCase(string frameNumber)
     {
