@@ -172,10 +172,10 @@ class repairService
         c.Status = 1;
 
         int d = 3;
-        string cstTlf = c.CustomerInfo.Phone;
+        string customerNumber = c.CustomerInfo.Phone;
         Console.WriteLine($"Offer for case {frameNumber}: {Price.ToString("F2")} kr, delivery in {d} days.");
-        Console.WriteLine($"Calling {cstTlf}...");
-        notifier.LeaveVoicemail(cstTlf);
+        Console.WriteLine($"Calling {customerNumber}...");
+        notifier.LeaveVoicemail(customerNumber);
     }
 
     public void ApproveCase(string frameNumber)
