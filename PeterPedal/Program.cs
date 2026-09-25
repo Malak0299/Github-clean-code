@@ -1,15 +1,22 @@
 using System;
 using System.Collections.Generic;
 
-// Customer contact details for a repair case.
-class RepairCaseData
+/// <summary>
+///  This class represents the data of a repair case, including the customer's first name, last name, and phone number.
+/// </summary>
+/// <returns>A RepairCaseData object containing the customer's information.</returns>
+public class RepairCaseData
 {
-    public string FirstName;
+    public string FirstName; 
     public string LastName;
     public string Phone;
 }
 
-class RepairCase
+/// <summary>
+/// This class represents a repair case, including the frame number, problem description, customer information, findings, parts, status, approval status, and total price.
+/// </summary>
+/// <returns>A RepairCase object containing the details of the repair case.</returns>
+public class RepairCase
 {
     public string FrameNumber;
     public string Problem;
@@ -21,7 +28,11 @@ class RepairCase
     public decimal TotalPrice;
 }
 
-class SparePartCatalog
+/// <summary>
+/// This class represents a catalog of spare parts and their prices. It provides a method to retrieve the price of a specific part by its name.
+/// </summary>
+/// <returns>A SparePartCatalog object containing the prices of spare parts.</returns>
+public class SparePartCatalog
 {
     private Dictionary<string, decimal> prices = new Dictionary<string, decimal>
     {
@@ -40,7 +51,11 @@ class SparePartCatalog
     }
 }
 
-class Notifier
+/// <summary>
+/// This class is responsible for notifying customers about their repair cases.
+/// </summary>
+/// <returns>A Notifier object capable of sending notifications.</returns>
+public class Notifier
 {
     public void SendSms(string phone, String message)
     {
@@ -53,7 +68,11 @@ class Notifier
     }
 }
 
-class repairService
+/// <summary>
+/// This class represents the repair service, which manages repair cases, spare parts, and notifications. It provides methods to create cases, register findings, look up parts, calculate offers, approve cases, perform repairs, finish repairs, and process payments.
+/// </summary>
+/// <returns>A repairService object capable of managing repair operations.</returns>
+public class repairService
 {
     private List<RepairCase> cases = new List<RepairCase>();
     private SparePartCatalog catalog = new SparePartCatalog();
@@ -235,8 +254,8 @@ class repairService
 
     // Old summary print, replaced by the receipt in finishRepair(). No longer called anywhere.
     public void PrintCaseSummary(string frameNumber) {
-	RepairCase c = FindCase(frameNumber);
-	Console.WriteLine("Case summary for " + c.FrameNumber + ": " + c.Problem);
+        RepairCase c = FindCase(frameNumber);
+        Console.WriteLine("Case summary for " + c.FrameNumber + ": " + c.Problem);
     }
 
     private RepairCase FindCase(string frameNumber)
@@ -252,7 +271,11 @@ class repairService
     }
 }
 
-class Program
+/// <summary>
+/// This is the main entry point of the program. It creates an instance of the repairService class and demonstrates its functionality by creating a repair case, registering findings, looking up parts, calculating an offer, approving the case, performing the repair, finishing the repair, and processing payment.
+/// </summary>
+/// <returns>None</returns>
+public class Program
 {
     static void Main(string[] args)
     {
