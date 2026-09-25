@@ -218,7 +218,7 @@ class repairService
             c.TotalPrice = total;
             c.Status = 3;
 
-            String message = "Hi " + c.CustomerInfo.FirstName + ", your bike is ready for pickup!";
+            string message = "Hi " + c.CustomerInfo.FirstName + ", your bike is ready for pickup!";
             notifier.SendSms(c.CustomerInfo.Phone, message);
 
             Console.WriteLine("--- Receipt ---");
